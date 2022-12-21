@@ -1,3 +1,4 @@
+import os
 import pygame
 import math
 
@@ -12,7 +13,6 @@ screen = pygame.display.set_mode((window_width, window_height))
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-
 
 # Center Point
 center_x = window_width // 2
@@ -49,6 +49,12 @@ planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
 
 # Set up the timer
 clock = pygame.time.Clock()
+
+# Screenshots for animation
+screenshot_folder = "screenshots"
+if not os.path.exists(screenshot_folder):
+    os.makedirs(screenshot_folder)
+screenshot_number = 0
 
 # define zoom
 zoom = 1
@@ -91,6 +97,12 @@ while not done:
     
     # Update the display
     pygame.display.flip()
+    
+    # Take Screenshot
+    pygame.image.save(screen,f"{screenshot_folder}/{screenshot_number:010}.jpg")
+    screenshot_number += 1
+    
+
 
 # Quit pygame
 pygame.quit()
