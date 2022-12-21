@@ -42,7 +42,7 @@ mars = Planet("Mars", center_x + 125, center_y, 15, 125, 2 * math.pi / 3, mars_c
 jupiter = Planet("Jupiter", center_x + 150, center_y, 30, 150, math.pi, jupiter_color)
 saturn = Planet("Saturn", center_x + 200, center_y, 25, 200, 3 * math.pi / 2, saturn_color)
 uranus = Planet("Uranus", center_x + 250, center_y, 20, 250, 2 * math.pi, uranus_color)
-neptune = Planet("Neptune", center_x + center_y, center_y, 15, center_y, 5 * math.pi / 3, neptune_color)
+neptune = Planet("Neptune", center_x + center_y, center_y, 15, 300, 5 * math.pi / 3, neptune_color)
 pluto = Planet("Pluto", center_x + 350, center_y, 10, 350, 3 * math.pi / 4, pluto_color)
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]

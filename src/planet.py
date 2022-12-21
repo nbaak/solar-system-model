@@ -17,3 +17,5 @@ class Planet:
         self.y = math.sin(self.angle) * ((self.orbit_radius + distance_offset) * zoom) + center.y
 
 
+    def __repr__(self):
+        return f"{self.name} {self.orbit_radius}"
