@@ -1,7 +1,8 @@
 import math
 
 class Planet:
-    def __init__(self, x, y, radius, orbit_radius, orbit_speed, color):
+    def __init__(self, name, x, y, radius, orbit_radius, orbit_speed, color):
+        self.name = name
         self.x = x
         self.y = y
         self.radius = radius

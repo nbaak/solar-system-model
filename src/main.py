@@ -22,7 +22,7 @@ center_y = window_height // 2
 sun_x = center_x
 sun_y = center_y
 sun_radius = 50
-sun = Planet(sun_x, sun_y, sun_radius, 0, 0, WHITE)
+sun = Planet("Sun", sun_x, sun_y, sun_radius, 0, 0, WHITE)
 
 # Set up the planets
 mercury_color = (178, 178, 178)  # gray
@@ -35,15 +35,15 @@ uranus_color = (153, 153, 255)  # light blue
 neptune_color = (51, 102, 255)  # dark blue
 pluto_color = (178, 102, 255)  # purple
 
-mercury = Planet(center_x + 50, center_y, 10, 50, math.pi / 4, mercury_color)
-venus = Planet(center_x + 75, center_y, 15, 75, math.pi / 3, venus_color)
-earth = Planet(center_x + 100, center_y, 20, 100, math.pi / 2, earth_color)
-mars = Planet(center_x + 125, center_y, 15, 125, 2 * math.pi / 3, mars_color)
-jupiter = Planet(center_x + 150, center_y, 30, 150, math.pi, jupiter_color)
-saturn = Planet(center_x + 200, center_y, 25, 200, 3 * math.pi / 2, saturn_color)
-uranus = Planet(center_x + 250, center_y, 20, 250, 2 * math.pi, uranus_color)
-neptune = Planet(center_x + center_y, center_y, 15, center_y, 5 * math.pi / 3, neptune_color)
-pluto = Planet(center_x + 350, center_y, 10, 350, 3 * math.pi / 4, pluto_color)
+mercury = Planet("Mercury", center_x + 50, center_y, 10, 50, math.pi / 4, mercury_color)
+venus = Planet("Venus", center_x + 75, center_y, 15, 75, math.pi / 3, venus_color)
+earth = Planet("Earth", center_x + 100, center_y, 20, 100, math.pi / 2, earth_color)
+mars = Planet("Mars", center_x + 125, center_y, 15, 125, 2 * math.pi / 3, mars_color)
+jupiter = Planet("Jupiter", center_x + 150, center_y, 30, 150, math.pi, jupiter_color)
+saturn = Planet("Saturn", center_x + 200, center_y, 25, 200, 3 * math.pi / 2, saturn_color)
+uranus = Planet("Uranus", center_x + 250, center_y, 20, 250, 2 * math.pi, uranus_color)
+neptune = Planet("Neptune", center_x + center_y, center_y, 15, center_y, 5 * math.pi / 3, neptune_color)
+pluto = Planet("Pluto", center_x + 350, center_y, 10, 350, 3 * math.pi / 4, pluto_color)
 
 planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
 
@@ -82,6 +82,12 @@ while not done:
     # Draw the planets
     for planet in planets:
         pygame.draw.circle(screen, planet.color, (planet.x, planet.y), planet.radius * zoom)
+        # Draw the name label
+        font = pygame.font.Font(None, 36)
+        text = font.render(planet.name, 1, WHITE)
+        text_x = planet.x - text.get_width() // 2
+        text_y = planet.y - planet.radius * zoom - text.get_height()
+        screen.blit(text, (text_x, text_y))
     
     # Update the display
     pygame.display.flip()
