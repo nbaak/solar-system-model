@@ -55,6 +55,7 @@ screenshot_folder = "screenshots"
 if not os.path.exists(screenshot_folder):
     os.makedirs(screenshot_folder)
 screenshot_number = 0
+recording = False
 
 # define zoom
 zoom = 1
@@ -73,6 +74,8 @@ while not done:
                 zoom -= .1
             elif event.key == pygame.K_q:
                 done = True
+            elif event.key == pygame.K_r:
+                recording = not recording
     
     # Clear the screen
     screen.fill(BLACK)
@@ -95,12 +98,15 @@ while not done:
         text_y = planet.y - planet.radius * zoom - text.get_height()
         screen.blit(text, (text_x, text_y))
     
-    # Update the display
-    pygame.display.flip()
     
     # Take Screenshot
-    pygame.image.save(screen,f"{screenshot_folder}/{screenshot_number:010}.jpg")
-    screenshot_number += 1
+    if recording:
+        pygame.image.save(screen,f"{screenshot_folder}/{screenshot_number:010}.jpg")
+        screenshot_number += 1
+        pygame.draw.circle(screen, (255,0,0), (20,20), 5)
+        
+    # Update the display
+    pygame.display.flip()
     
 
 
